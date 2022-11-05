@@ -15,6 +15,24 @@ const carrinho = {
         }
     ],
 
+    calcularTotalDeItens: function () {
+        let totalDeItens = 0;
+        for (let item = 0; item < this.produtos.length; item++) {
+            totalDeItens += this.produtos[item].qtd;
+        }
+
+        return totalDeItens;
+    },
+
+    calcularTotalAPagar: function () {
+        let totalASerPago = 0;
+        for (let item = 0; item < this.produtos.length; item++) {
+            totalASerPago += (this.produtos[item].qtd * this.produtos[item].precoUnit);
+        }
+
+        return (totalASerPago / 100).toFixed(2);
+    },
+
     imprimirResumo: function () {
         let itensCarrinho = 0;
         let totalPagar = 0;
@@ -77,7 +95,9 @@ const novaBermuda = {
 }
 */
 
-carrinho.imprimirDetalhes();
+console.log(carrinho.calcularTotalAPagar());
+
+//carrinho.imprimirDetalhes();
 
 //carrinho.addProduto(novoTenis);
 
