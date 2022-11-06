@@ -20,20 +20,17 @@ const contaBancaria = {
     },
 
     extrato: function () {
-        return `
-            Extrato de ${this.nome} - Saldo: R$ ${this.saldo}
-            Histórico:
-            ${
-                for (let item = 0; item < this.historicos.length; item++) {
-            ``
-        }
-    }
+        let extrato = `Extrato de ${this.nome} - Saldo: R$ ${this.saldo / 100}\nHistórico: `;
 
-        `
+        console.log(extrato);
+        for (let indice in this.historicos) {
+            console.log(`${this.historicos[indice].tipo} de R$ ${this.historicos[indice].valor / 100}`);
+        }
+
     }
 }
 
 console.log(contaBancaria.depositar(10000));
-console.log(contaBancaria.sacar(500));
-console.log(`Saldo: ${ contaBancaria.saldo / 100}`);
-console.log(contaBancaria.historicos);
+console.log(contaBancaria.sacar(50000));
+console.log(contaBancaria.sacar(5000));
+contaBancaria.extrato();
